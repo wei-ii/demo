@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Каталог обуви</h2>
+{% for p in products %}
+<div class="card {% if p['quantity'] <= 3 %}low-stock{% endif %}">
+    <h3>{{ p['name'] }}</h3>
+    <p>Категория: {{ p['category'] }} | Размер: {{ p['size'] }}</p>
+    <p>Цена: {{ p['price'] }} руб. | В наличии: {{ p['quantity'] }} шт.</p>
+    <form action="/order/{{ p['id'] }}" method="post">
+        <input type="number" name="quantity" value="1" min="1" max="{{ p['quantity'] }}" style="width: 80px;">
+        <button type="submit">Заказать</button>
+    </form>
+</div>
+{% endfor %}
+{% endblock %}

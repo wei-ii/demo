@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Мои заказы</h2>
+<table>
+    <tr><th>Товар</th><th>Кол-во</th><th>Сумма</th><th>Дата</th></tr>
+    {% for o in orders %}
+    <tr>
+        <td data-label="Товар">{{ o['name'] }}</td>
+        <td data-label="Кол-во">{{ o['quantity'] }}</td>
+        <td data-label="Сумма">{{ o['total'] }} руб.</td>
+        <td data-label="Дата">{{ o['date'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
